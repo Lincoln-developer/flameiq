@@ -58,3 +58,13 @@ FlameIQ is built with a hybrid model that keeps core tools free and open, while 
 | 🚀 **FlameIQ Pro**  | Cloud dashboards, CI/CD integration, AI performance assistant, team collaboration |
 
 Join the community with the open-source edition, or unlock full performance observability for your entire team with Pro.
+
+---
+
+## 👥 Contributing
+
+We welcome contributions from the community! Whether you're fixing a bug, improving documentation, or adding new features — every bit of help matters.
+
+To get started, please read our [**Contributing Guide**](./docs/CONTRIBUTING.md) to learn how to set up your development environment, follow our code standards, and submit pull requests successfully.
+
+We also encourage you to review our [**Code of Conduct**](./docs/CODE_OF_CONDUCT.md) to foster a respectful and inclusive community for everyone.
