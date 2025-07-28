@@ -7,27 +7,40 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
 ---
 
 ## 📊 High-Level System Flow
+# 🔥 FlameIQ – Architecture Overview
 
-The diagram below illustrates the primary components of FlameIQ and their interactions, showing the flow of control and data from user input to the final visualization.
+**FlameIQ** is an open-source CLI-based Python performance profiler that enables developers to analyze their scripts or applications through terminal commands, collect performance traces, and generate insightful flamegraphs for visualization.
 
-```mermaid
-graph TD
- A[cli.py\n(User Interface)] --> B{runner.py\n(Orchestrator)};
- B --> C[engine/sampler.py\n(Sampling Profiler)];
- B --> D[engine/collector.py\n(Trace Aggregator)];
- B --> E[formatter/flamegraph.py\n(Formatter)];
- B --> F[output/exporter.py\n(Output Handler)];
- C -- Raw Samples --> D;
- D -- Aggregated Traces --> E;
- E -- Formatted Data --> F;
- F -- Visual Output --> G[User's Browser / Disk];
+This document describes the **architecture** of the FlameIQ CLI Profiler, outlining both the **high-level system flow** and **detailed internal components**.
 
- classDef default fill:#f9f,stroke:#333,stroke-width:2px,font-size:12px;
- classDef component fill:#d9efff,stroke:#333,stroke-width:2px,font-size:12px;
- classDef dataflow fill:#fff,stroke:#333,stroke-width:1px,font-size:10px;
+---
 
- class A,B,C,D,E,F component;
- class G default;
+## 📊 High-Level System Flow
+
+```text
+┌────────────────────────┐
+│  Terminal / CLI Input  │
+└────────────┬───────────┘
+             ▼
+┌─────────────────────┐
+│     CLI Interface    │  ← [typer-based commands]
+└────────┬────────────┘
+         ▼
+┌───────────────────────────────┐
+│         Profiler Engine       │  ← [sampling + stack capture]
+└────────────┬──────────────────┘
+             ▼
+┌─────────────────────┐
+│   Trace Collector   │  ← [raw trace events, stack frames]
+└────────┬────────────┘
+         ▼
+┌──────────────────────────┐
+│   Flamegraph Formatter   │  ← [collapsed stacks or JSON]
+└────────────┬─────────────┘
+             ▼
+┌────────────────────┐
+│  Flamegraph Output  │ ← [SVG / HTML / JSON]
+└────────────────────┘
 ```
 
 # 🧱 FlameIQ – Detailed Internal Component Architecture
