@@ -17,29 +17,14 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
 
 ## 📊 High-Level System Flow
 
-┌────────────────────────┐
-│  Terminal / CLI Input  │
-└────────────┬───────────┘
-             ▼
-┌─────────────────────┐
-│     CLI Interface    │  ← [typer-based commands]
-└────────┬────────────┘
-         ▼
-┌───────────────────────────────┐
-│         Profiler Engine       │  ← [sampling + stack capture]
-└────────────┬──────────────────┘
-             ▼
-┌─────────────────────┐
-│   Trace Collector   │  ← [raw trace events, stack frames]
-└────────┬────────────┘
-         ▼
-┌──────────────────────────┐
-│   Flamegraph Formatter   │  ← [collapsed stacks or JSON]
-└────────────┬─────────────┘
-             ▼
-┌────────────────────┐
-│  Flamegraph Output  │ ← [SVG / HTML / JSON]
-└────────────────────┘
+```mermaid
+    graph TD
+        A[Terminal / CLI Input] --> B[CLI Interface<br>(typer-based commands)];
+        B --> C[Profiler Engine<br>(sampling + stack capture)];
+        C--> D[Trace Collector<br>(raw trace events, stack frames)];
+        D --> E[Flamegraph Formatter<br>(collapsed stacks or JSON)];
+        E --> F[Flamegraph Output<br>(SVG / HTML / JSON)];
+```
 
 # 🧱 FlameIQ – Detailed Internal Component Architecture
 
