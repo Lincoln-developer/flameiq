@@ -36,9 +36,6 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
                                           └──────────────────────┘
 
 
-
----
-
 # 🧱 FlameIQ – Detailed Internal Component Architecture
 
 FlameIQ is built upon the following architectural principles to ensure maintainability, extensibility, and robustness:
