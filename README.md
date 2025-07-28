@@ -39,8 +39,8 @@ FlameIQ is designed to grow with you — from solo profiling on your laptop to *
 |----------------------------------|-----------------------------------------------------------------------------|
 | 🔧 `flameiq` CLI + Local Viewer  | Profile Python apps locally, generate flamegraphs, and inspect traces offline |
 | ☁️ Cloud Dashboard (Pro)         | Upload traces, compare runs, detect regressions, and collaborate as a team |
-| 🤖 GitHub Bot + CI Integration   | Run perf tests in pull requests, block regressions, and get inline comments |
-| 🧠 AI-Powered Flamegraph Insights| Get optimization tips, root cause analysis, and AI-annotated traces         |
+| 🤖 GitHub Bot + CI Integration (Pro)   | Run perf tests in pull requests, block regressions, and get inline comments |
+| 🧠 AI-Powered Flamegraph Insights (Pro) | Get optimization tips, root cause analysis, and AI-annotated traces         |
 | 📦 Package Ecosystem Intelligence| Analyze Python packages before install with performance and health scores   |
 | 🔁 Time Travel for Traces (Pro)  | Compare multiple runs over time to visualize performance evolution          |
 | 📊 Interactive Flamegraphs       | Drill into call stacks, zoom/pan, search functions, and export to SVG/JSON |
