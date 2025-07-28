@@ -12,22 +12,22 @@ The diagram below illustrates the primary components of FlameIQ and their intera
 
 ```mermaid
 graph TD
-    A[cli.py <br> (User Interface)] --> B{runner.py <br> (Orchestrator)};
-    B --> C[engine/sampler.py <br> (Sampling Profiler)];
-    B --> D[engine/collector.py <br> (Trace Aggregator)];
-    B --> E[formatter/flamegraph.py <br> (Formatter)];
-    B --> F[output/exporter.py <br> (Output Handler)];
-    C -- Raw Samples --> D;
-    D -- Aggregated Traces --> E;
-    E -- Formatted Data --> F;
-    F -- Visual Output --> G[User's Browser / Disk];
+A[cli.py <br> (User Interface)] --> B{runner.py <br> (Orchestrator)};
+B --> C[engine/sampler.py <br> (Sampling Profiler)];
+B --> D[engine/collector.py <br> (Trace Aggregator)];
+B --> E[formatter/flamegraph.py <br> (Formatter)];
+B --> F[output/exporter.py <br> (Output Handler)];
+C -- Raw Samples --> D;
+D -- Aggregated Traces --> E;
+E -- Formatted Data --> F;
+F -- Visual Output --> G[User's Browser / Disk];
 
-    classDef default fill:#f9f,stroke:#333,stroke-width:2px,font-size:12px;
-    classDef component fill:#d9efff,stroke:#333,stroke-width:2px,font-size:12px;
-    classDef dataflow fill:#fff,stroke:#333,stroke-width:1px,font-size:10px;
+classDef default fill:#f9f,stroke:#333,stroke-width:2px,font-size:12px;
+classDef component fill:#d9efff,stroke:#333,stroke-width:2px,font-size:12px;
+classDef dataflow fill:#fff,stroke:#333,stroke-width:1px,font-size:10px;
 
-    class A,B,C,D,E,F component;
-    class G default;
+class A,B,C,D,E,F component;
+class G default;
 ```
 
 # 🧱 FlameIQ – Detailed Internal Component Architecture
