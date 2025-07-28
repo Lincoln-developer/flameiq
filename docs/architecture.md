@@ -17,7 +17,6 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
 
 ## 📊 High-Level System Flow
 
-```text
 ┌────────────────────────┐
 │  Terminal / CLI Input  │
 └────────────┬───────────┘
@@ -41,7 +40,6 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
 ┌────────────────────┐
 │  Flamegraph Output  │ ← [SVG / HTML / JSON]
 └────────────────────┘
-```
 
 # 🧱 FlameIQ – Detailed Internal Component Architecture
 
