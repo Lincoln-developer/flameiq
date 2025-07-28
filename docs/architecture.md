@@ -9,23 +9,23 @@ This document describes the **architecture** of the FlameIQ CLI Profiler, outlin
 ## 📊 High-Level System Flow
 
 ```mermaid
-    graph TD
-        A[cli.py <br> (User Interface)] --> B{runner.py <br> (Orchestrator)};
-        B --> C[engine/sampler.py <br> (Sampling Profiler)];
-        B --> D[engine/collector.py <br> (Trace Aggregator)];
-        B --> E[formatter/flamegraph.py <br> (Formatter)];
-        B --> F[output/exporter.py <br> (Output Handler)];
-        C -- Raw Samples --> D;
-        D -- Aggregated Traces --> E;
-        E -- Formatted Data --> F;
-        F -- Visual Output --> G[User's Browser / Disk];
+graph TD
+    A[cli.py (User Interface)] --> B{runner.py (Orchestrator)}
+    B --> C[engine/sampler.py (Sampling Profiler)]
+    B --> D[engine/collector.py (Trace Aggregator)]
+    B --> E[formatter/flamegraph.py (Formatter)]
+    B --> F[output/exporter.py (Output Handler)]
+    C -- Raw Samples --> D
+    D -- Aggregated Traces --> E
+    E -- Formatted Data --> F
+    F -- Visual Output --> G[User's Browser / Disk]
 
-        classDef default fill:#f9f,stroke:#333,stroke-width:2px,font-size:12px;
-        classDef component fill:#d9efff,stroke:#333,stroke-width:2px,font-size:12px;
-        classDef dataflow fill:#fff,stroke:#333,stroke-width:1px,font-size:10px;
+    classDef default fill:#f9f,stroke:#333,stroke-width:2px,font-size:12px;
+    classDef component fill:#d9efff,stroke:#333,stroke-width:2px,font-size:12px;
+    classDef dataflow fill:#fff,stroke:#333,stroke-width:1px,font-size:10px;
 
-        class A,B,C,D,E,F component;
-        class G default;
+    class A,B,C,D,E,F component;
+    class G default;
 ```
 ---
 
