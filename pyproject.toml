@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flameiq"
+version = "0.1.0"
+authors = [
+    { name="Angufibo Lincoln", email="angufibolinc@gmail.com" },
+]
+description = "A powerful performance profiler for Python applications."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.7.1",
+    "toml>=0.10.2",
+]
+
+[project.scripts]
+flameiq = "flameiq.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["flameiq*"]
