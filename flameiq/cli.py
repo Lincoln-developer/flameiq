@@ -10,6 +10,7 @@ import typer
 from rich.console import Console
 from rich.progress import track
 from rich.prompt import Prompt
+from flameiq.runner import Configuration, FlameIQRunner
 
 # --- Configuration & Setup ---
 
@@ -98,22 +99,17 @@ def profile(
     """
     Run a performance profile on a command or an existing process.
     """
-    if pid:
-        console.print(f"[bold green]Starting profiling of PID {pid} for {duration}s...[/bold green]")
-        # Placeholder for actual non-invasive profiling logic using a library like py-spy.
-        # You would use a library here that can attach to an existing process.
-    else:
-        # Re-construct the command string for display
-        command_str = " ".join(command)
-        console.print(f"[bold green]Starting profiling of command: {command_str}[/bold green]")
-        console.print(f"Profiling for {duration} seconds with a sampling rate of {sampling_rate} Hz.")
-        # Placeholder for actual profiling logic
-        # For a long task like profiling, use a progress indicator.
-        # Here we simulate the progress.
-        for _ in track(range(duration), description="[cyan]Profiling...[/cyan]"):
-            time.sleep(1)
-
-    console.print(f"[bold green]Profiling complete! Data saved to [yellow]{output}[/yellow].[/bold green]")
+    # Create a Configuration object to pass all arguments to the runner
+    config = Configuration(
+        command=command,
+        pid=pid,
+        duration=duration,
+        sampling_rate=sampling_rate,
+        output=output
+    )
+    # Pass the config and console to the runner and execute the command
+    runner = FlameIQRunner(config, console)
+    runner.run_profiler()
 
 # --- Analysis Command Group ---
 
@@ -130,13 +126,12 @@ def analyze(
     """
     Analyze a previously generated profile data file.
     """
-    console.print(f"[bold green]Analyzing profile data from [yellow]{profile_file}[/yellow]...[/bold green]")
-    if function_filter:
-        console.print(f"Applying filter for functions matching: [yellow]'{function_filter}'[/yellow]")
-
-    # Placeholder for analysis logic
-    console.print("[bold green]Analysis complete. Use the 'report' command to generate output.[/bold green]")
-
+    config = Configuration(
+        profile_file=profile_file,
+        function_filter=function_filter
+    )
+    runner = FlameIQRunner(config, console)
+    runner.run_analyzer()
 
 # --- Report Command Group ---
 
@@ -159,15 +154,13 @@ def report(
     """
     Generate a report from a profile data file in various formats.
     """
-    # If no output path is specified, create a default one based on the input file
-    if output_path is None:
-        output_path = profile_file.with_suffix(f".{output_format.value}")
-
-    console.print(f"[bold green]Generating a [yellow]{output_format.value}[/yellow] report from [yellow]{profile_file}[/yellow]...[/bold green]")
-
-    # Placeholder for report generation logic
-    console.print(f"[bold green]Report generated and saved to [yellow]{output_path}[/yellow].[/bold green]")
-
+    config = Configuration(
+        profile_file=profile_file,
+        output_format=output_format.value,
+        output_path=output_path
+    )
+    runner = FlameIQRunner(config, console)
+    runner.run_reporter()
 
 # --- Configuration Command Group ---
 
