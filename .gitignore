@@ -1,1 +1,28 @@
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Python compiled bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
 venv/
+
+# C Extension compiled files
+# The --inplace flag will put these directly in the source directory.
+flameiq/engine/_sampler*.so
+flameiq/engine/_sampler*.pyd
+flameiq/engine/_sampler*.dll
+
+flameiq/__pycache__/
+
+# IDE and editor directories
+.vscode/
+.idea/
+.DS_Store
+
+# Test-related cache
+.pytest_cache/
