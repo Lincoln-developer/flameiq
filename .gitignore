@@ -1,5 +1,6 @@
 # Python build artifacts
 build/
+build/lib/flameiq/
 dist/
 *.egg-info/
 
